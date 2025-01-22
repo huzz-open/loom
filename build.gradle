@@ -1,0 +1,33 @@
+plugins {
+    id "java"
+}
+
+ext {
+    uniqueVersion = "1.0.0-SNAPSHOT"
+}
+
+group = "io.huzz.loom"
+version = "${uniqueVersion}"
+
+allprojects {
+    repositories {
+        // 改为阿里云的镜像地址
+        maven { setUrl("https://maven.aliyun.com/repository/central") }
+        maven { setUrl("https://maven.aliyun.com/repository/jcenter") }
+        maven { setUrl("https://maven.aliyun.com/repository/google") }
+        maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { setUrl("https://maven.aliyun.com/repository/public") }
+        maven { setUrl("https://jitpack.io") }
+        google()
+        mavenCentral()
+    }
+}
+
+dependencies {
+    testImplementation platform("org.junit:junit-bom:5.9.1")
+    testImplementation "org.junit.jupiter:junit-jupiter"
+}
+
+test {
+    useJUnitPlatform()
+}
